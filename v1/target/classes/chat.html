@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Filter Widget</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+</head>
+<body>
+    <h1>Chat Filter Widget</h1>
+    <div id="chatlog"></div>
+
+    <script>
+        // Listen for the init event
+        Widget.on("init", () => {
+            console.log("Chat Filter Widget initialized.");
+        });
+        
+        // Listen for chat messages and append them to the chatlog
+        Koi.on("message", (event) => {
+            const chatLog = document.getElementById("chatlog");
+            const newMessage = document.createElement("p");
+            newMessage.textContent = `${event.sender.displayname}: ${event.message}`;
+            chatLog.appendChild(newMessage);
+        });
+    </script>
+</body>
+</html>
